@@ -23,4 +23,20 @@ export class UserController {
       throw new UnauthorizedException('Invalid credentials');
     }
   }
+
+  @Post('updatePassword')
+  async updatePassword(@Body() updateData: { email: string; newPassword: string }): Promise<string> {
+    const { email, newPassword } = updateData;
+
+    await this.userService.updatePassword(email, newPassword);
+
+    return 'Password updated successfully';
+  }
+
+  @Post('updateUser')
+  async updateUser(@Body() updatedUser: any): Promise<string> {
+    await this.userService.updateUser(updatedUser);
+
+    return 'User updated successfully';
+  }
 }
