@@ -10,21 +10,20 @@ export class UserController {
     
   }
 
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
+  @Get(':id')
+    getUserById(@Param('id') id: string): string {
+      return this.userService.getUserById(id);
+  }
 
   @Post()
-  registeration(@Body() userarg: User) {  
-    
-    return this.userService.registration(userarg);
-    }
+    registeration(@Body() userarg: User) {  
 
-    @Post("forgot")
+    return this.userService.registration(userarg);
+  }
+
+  @Post("forgot")
   forgotpassword(@Body() userarg: User) {  
     console.log(userarg);
     return this.userService.registration(userarg);
-    }
+  }
 }
-
